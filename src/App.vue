@@ -34,9 +34,42 @@
         </b-navbar-brand>
       </b-navbar>
     </div>
+
+    <!-- mapState -->
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p style="font-weight: bold">{{ $store.state.count }}</p>
+          <p style="font-weight: bold">{{ countName }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- counter -->
+    <Counter/>
+
     <router-view/>
   </div>
 </template>
+
+<script>
+  import Counter from './components/Counter.vue'
+
+  export default {
+    name: 'app',
+    components: {
+      Counter
+    },
+    computed: {
+      countName() {
+        return " welcome " +
+                this.$store.state.loggedInUser.name +
+                " you rol: " +
+                this.$store.state.loggedInUser.role
+      }
+    }
+  }
+</script>
 
 <style lang="scss" scoped>
   a {

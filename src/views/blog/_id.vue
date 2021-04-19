@@ -44,8 +44,7 @@
         },
         methods: {
             getData() {
-                const slug = this.$route.params.id;
-                axios.get('https://blog-api.primexc.com/api/mag/news/' + slug)
+                axios.get('https://blog-api.primexc.com/api/mag/news/' + this.$route.params.id)
                     .then(response => (this.product = response.data.result));
                 console.log(this.product)
             }
