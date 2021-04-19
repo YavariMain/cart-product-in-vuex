@@ -5,19 +5,18 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 d-flex justify-content-center mb-3" v-for="item in list">
                     <template>
                         <b-card
-                                :title="item.location"
+                                :title="item.title"
                                 :img-src="item.image"
                                 img-alt="Image"
                                 img-top
                                 tag="article"
                                 class="mb-2"
-                                style="height: 300px;"
                         >
                             <b-card-text>
-                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                               {{ item.preview_contetn }}
                             </b-card-text>
 
-                            <b-button :href="`/blog/${item.slug}`" variant="primary">more ...</b-button>
+                            <b-button :href="`/blog/${item.id}`" variant="primary">more ...</b-button>
                             <b-button href="#" variant="success" class="ml-1">add to cart</b-button>
                         </b-card>
                     </template>
@@ -48,9 +47,17 @@
         methods: {
             getData() {
                 axios
-                    .get('https://api.alibtob.com/en/apiv2/catalog/get-product-list?slug=manufacturing-processing-machinery&page=1')
-                    .then(response => (this.list = response.data.data.data));
+                    .get('https://blog-api.primexc.com/api/mag/news?page=1')
+                    .then(response => (this.list = response.data.result));
+                console.log(this.list)
             }
         }
     }
 </script>
+
+<style scoped>
+    .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+</style>

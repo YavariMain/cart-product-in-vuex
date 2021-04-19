@@ -6,13 +6,12 @@
                     <b-card no-body class="overflow-hidden">
                         <b-row no-gutters>
                             <b-col md="6">
-                                <b-card-img :src="list.image" alt="Image" class="rounded-0"></b-card-img>
+                                <b-card-img :src="product.image" alt="Image" class="rounded-0"></b-card-img>
                             </b-col>
                             <b-col md="6">
-                                <b-card-body :title="list.keyword">
+                                <b-card-body :title="product.title">
                                     <b-card-text>
-                                        This is a wider card with supporting text as a natural lead-in to additional content.
-                                        This content is a little bit longer.
+                                        {{product.preview_contetn}}
                                     </b-card-text>
                                     <b-button href="#" variant="success">add to cart</b-button>
                                 </b-card-body>
@@ -37,7 +36,7 @@
 //   }
         data() {
             return {
-                list:[],
+                product:[],
             }
         },
         mounted () {
@@ -46,9 +45,9 @@
         methods: {
             getData() {
                 const slug = this.$route.params.id;
-                axios.get('https://api.alibtob.com/en/apiv2/catalog/get-product-detail?slug=' + slug)
-                    .then(response => (this.list = response.data.data));
-                console.log(this.list)
+                axios.get('https://blog-api.primexc.com/api/mag/news/' + slug)
+                    .then(response => (this.product = response.data.result));
+                console.log(this.product)
             }
         }
     }
