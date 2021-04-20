@@ -60,4 +60,7 @@
         height: 300px;
         object-fit: cover;
     }
+    .card-title {
+        font-size: 20px;
+    }
 </style>

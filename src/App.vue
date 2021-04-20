@@ -29,44 +29,37 @@
 
         <!-- cart icon -->
         <b-navbar-brand href="#" class="cart-icon d-flex justify-content-end position-relative">
-          <div>1</div>
+          <div>{{ counter }}</div>
           <img src="./assets/media/cart.png" alt="cart" class="w-75">
         </b-navbar-brand>
       </b-navbar>
     </div>
 
-    <!-- mapState -->
-    <div class="container-xl">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <p style="font-weight: bold">{{ $store.state.count }}</p>
-          <p style="font-weight: bold">{{ countName }}</p>
-        </div>
-      </div>
-    </div>
+    <!-- counter-normal -->
+    <CounterNormal/>
 
-    <!-- counter -->
-    <Counter/>
+    <!-- counter-vuex -->
+    <CounterVuex/>
 
     <router-view/>
   </div>
 </template>
 
 <script>
-  import Counter from './components/Counter.vue'
+  import CounterNormal from './components/Counter-normal.vue'
+  import CounterVuex from './components/Counter-vuex.vue'
+  import { mapState } from 'vuex';
 
   export default {
     name: 'app',
     components: {
-      Counter
+        CounterNormal,
+        CounterVuex
     },
     computed: {
-      countName() {
-        return " welcome " +
-                this.$store.state.loggedInUser.name +
-                " you rol: " +
-                this.$store.state.loggedInUser.role
-      }
+      ...mapState([
+        'counter'
+      ])
     }
   }
 </script>

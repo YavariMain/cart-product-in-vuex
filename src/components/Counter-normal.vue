@@ -1,6 +1,5 @@
 <template>
     <div class="container-xl">
-        <hr />
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-center mb-3">
                 <b-button @click="increment" variant="success">Increment</b-button>
@@ -8,10 +7,11 @@
                 <b-button @click="incrementIfOdd" variant="info">Increment if Odd</b-button>
                 <b-button @click="incrementAsync" variant="warning">Increment Async</b-button>
             </div>
-            <div class="col-lg-12 text-center mb-4">
+            <div class="col-lg-12 text-center">
                 <p style="font-weight: bold">Clicked {{ count }} times! Count is {{ parity }}.</p>
             </div>
         </div>
+        <hr />
     </div>
 </template>
 
@@ -52,5 +52,8 @@
 <style lang="scss" scoped>
     .btn {
         margin: 0 3px !important;
+    }
+    p {
+        margin: 0;
     }
 </style>
